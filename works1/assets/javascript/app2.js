@@ -40,7 +40,7 @@ app = {
     row.append('<td>' + arrivalNext  + '</td>');
     row.append('<td>' + minutesAway  + '</td>');
     $('.table tbody').append(row);
-  }
+  },
 
   clearFields: function() {
     $('#display_trainName').val("");
@@ -66,7 +66,9 @@ $('#submit').on('click', function(){
   var remainderTime;                                                // calculated
   var arrivalNext;                                                  // database, page 
   var minutesAway;                                                  // database, page
-                           
+                       
+  app.clearFields();    
+
   // PERFORM CALCULATIONS
   // First Time (pushed back 1 year to make sure it comes before current time)
   arrivalFirst_converted = moment(arrivalFirst, "hh:mm").subtract(1, "years");
@@ -103,7 +105,7 @@ $('#submit').on('click', function(){
     dbMinutesAway: minutesAway
   });
 
-  app.clearFields();
+
 });
 
 
