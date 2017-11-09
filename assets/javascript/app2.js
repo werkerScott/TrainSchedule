@@ -17,6 +17,7 @@ firebase.initializeApp(config);
 // Make database referenceable variable
 var database = firebase.database();
 
+
 // DATA EVENT LISTENER
 // Load data into the UI anytime a new child node is added
 database.ref().on("child_added", function(childSnapshot) {
@@ -47,7 +48,13 @@ app = {
     $('#display_trainDestination').val("");
     $('#display_trainFrequency').val("");
     $('#display_trainArrival').val("");
-  }
+  },
+
+  updateEveryMinute_setter: function() {
+    setinterval(this.updateEveryMinute_data, 20 * 1000);
+  },
+
+
 }
 
 
@@ -67,7 +74,7 @@ $('#submit').on('click', function(){
   var arrivalNext;                                                  // database, page 
   var minutesAway;                                                  // database, page
                        
-  app.clearFields();    
+    
 
   // PERFORM CALCULATIONS
   // First Time (pushed back 1 year to make sure it comes before current time)
@@ -105,7 +112,7 @@ $('#submit').on('click', function(){
     dbMinutesAway: minutesAway
   });
 
-
+  app.clearFields();  
 });
 
 
