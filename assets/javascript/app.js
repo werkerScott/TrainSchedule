@@ -7,7 +7,7 @@
 
 
 // ------ METHODS                        -------- 
-app = {
+var app = {
 
   train:0,
   destination:0,
